@@ -9,8 +9,8 @@ con la ayuda de este libro y la documentación propia de pygame.
 
 # Requerimientos
 Version de Python con la que el juego fue elaborado: 3.12.1
-# Como instalarlo 
-# Como se juega
+# ¿Como instalarlo? 
+# ¿Como se juega?
 
 ## Segunda parte / Second Part
 
