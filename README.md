@@ -38,4 +38,19 @@ with the help of this book and pygame documentation
 # Requirements
 The python version for this game is: 3.12.1
 # How to install?
+#### Create a folder
+> Create a folder where you want
+#### Create a virtual enviroment
+There are a lot of ways to create one with python. This is an example: 
+> py -3 -m venv .venv
+#### Activate the virtual enviroment
+> .venv\Scripts\Activate
+#### Clone the repository
+> git clone https://github.com/jes-ross/Space_Invaders_Pygame.git
+#### Install the requeriments
+> pip install -r "requeriments.txt"
+#### Run the game
+> python Space_invaders.py
+#### O
+> python3 Space_invaders.py
 # How play it?
