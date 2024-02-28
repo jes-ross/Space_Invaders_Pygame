@@ -13,7 +13,9 @@ Version de Python con la que el juego fue elaborado: 3.12.1
 #### Crea una carpeta
 > Crea una carpeta donde desees
 #### Crea un entorno virtual
-> 
+Existen varias maneras de crear uno con python. Este es un ejemplo:
+> py -3 -m venv .venv
+
 
 # ¿Como se juega?
 
