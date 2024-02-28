@@ -28,6 +28,10 @@ Existen varias maneras de crear uno con python. Este es un ejemplo:
 
 # ¿Como se juega?
 
+## Movimiento
+
+Las flechas ◀️ y ▶️ corresponde al movimiento la tecla del Espacio es para disparar.
+
 ## Segunda parte / Second Part
 
 # Project purpose
