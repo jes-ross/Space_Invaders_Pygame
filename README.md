@@ -15,7 +15,16 @@ Version de Python con la que el juego fue elaborado: 3.12.1
 #### Crea un entorno virtual
 Existen varias maneras de crear uno con python. Este es un ejemplo:
 > py -3 -m venv .venv
-
+#### Activa el entorno virtual
+> .venv\Scripts\Activate
+#### Clona el repositorio en la carpeta
+> git clone https://github.com/jes-ross/Space_Invaders_Pygame.git
+#### Instala los requerimientos
+> pip install -r "requeriments.txt"
+#### Corre el juego
+> python Space_invaders.py 
+O
+> python3 Space_invaders.py
 
 # ¿Como se juega?
 
