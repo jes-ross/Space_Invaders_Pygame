@@ -23,7 +23,7 @@ Existen varias maneras de crear uno con python. Este es un ejemplo:
 > pip install -r "requeriments.txt"
 #### Corre el juego
 > python Space_invaders.py 
-O
+##### O
 > python3 Space_invaders.py
 
 # ¿Como se juega?
