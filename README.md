@@ -1,4 +1,4 @@
-### Primera parte en español y la segunda en ingles / First Part in Spanish and second one in englsih.
+### Primera parte en español y la segunda en ingles / First Part in Spanish and second one in english.
 
 ## Primera Parte / First Part
 
