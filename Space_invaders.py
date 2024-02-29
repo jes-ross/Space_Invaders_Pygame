@@ -26,17 +26,23 @@ class AlienInvasion:#Creating the game class.
         
     
     def run_game(self):#Run the game.
-        
+    
         while True:#Start the loop.
+            self._check_events()
+            self._update_screen()
+
+    def _check_events(self):
+
+        for event in pg.event.get():#Searching for users inputs.
+            if event.type == pg.QUIT:
+                sys.exit()
+
+    def _update_screen(self):
+        
+        self.screen.fill(self.settings.bg_color)#Adding colors.
+        self.ship.blitme()
             
-            for event in pg.event.get():#Searching for users inputs.
-                if event.type == pg.QUIT:
-                    sys.exit()
-            
-            self.screen.fill(self.settings.bg_color)#Adding colors.
-            self.ship.blitme()
-            
-            pg.display.flip()#Last screen.
+        pg.display.flip()#Last screen.
 
 if __name__ == '__main__':#Instance the game and run it.
     AI = AlienInvasion()
