@@ -3,6 +3,9 @@ import sys
 
 import pygame as pg
 
+from settings import Settings 
+
+
 
 
 class AlienInvasion:#Creating the game class.
@@ -12,10 +15,14 @@ class AlienInvasion:#Creating the game class.
         
         pg.init()
 
-        self.screen = pg.display.set_mode((1200, 800)) #Screen size.
+        self.settings = Settings()#Instance settings.
+
+        self.screen = pg.display.set_mode(
+            (self.settings.screen_width, self.settings.screen_height)
+        )
         pg.display.set_caption('Space Invaders')
         
-        self.bg_color = (230, 230, 230)#Configuration of colors.
+        
     
     def run_game(self):#Run the game.
         
@@ -25,7 +32,7 @@ class AlienInvasion:#Creating the game class.
                 if event.type == pg.QUIT:
                     sys.exit()
             
-            self.screen.fill(self.bg_color)#Adding colors.
+            self.screen.fill(self.settings.bg_color)#Adding colors.
             
             pg.display.flip()#Last screen.
 
