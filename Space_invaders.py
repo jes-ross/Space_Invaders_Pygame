@@ -4,7 +4,7 @@ import sys
 import pygame as pg
 
 from settings import Settings 
-
+from ship import Ship
 
 
 
@@ -22,6 +22,7 @@ class AlienInvasion:#Creating the game class.
         )
         pg.display.set_caption('Space Invaders')
         
+        self.ship = Ship(self)
         
     
     def run_game(self):#Run the game.
@@ -33,6 +34,7 @@ class AlienInvasion:#Creating the game class.
                     sys.exit()
             
             self.screen.fill(self.settings.bg_color)#Adding colors.
+            self.ship.blitme()
             
             pg.display.flip()#Last screen.
 
