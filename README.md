@@ -60,5 +60,5 @@ There are a lot of ways to create one with python. This is an example:
 > python3 Space_invaders.py
 # How play it?
 ## Movement
-The keys ◀️ and ▶️ are for movement and Space Bar is for shooting
-Press Q to quit
+<p>The keys ◀️ and ▶️ are for movement and Space Bar is for shooting</p>
+<p>Press Q to quit</p>
