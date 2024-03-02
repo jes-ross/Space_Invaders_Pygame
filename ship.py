@@ -26,13 +26,18 @@ class Ship:#Creating ship class.
         self.moving_right = False
         self.moving_left = False
 
+
+        self.rect.x = self.x
+
     def update(self):#Update ship position.
+        
         if self.moving_right:
             self.rect.x += self.settings.ship_speed
         elif self.moving_left:
             self.rect.x -= self.settings.ship_speed
 
-        self.rect.x = self.x
+        
+        
 
 
     def blitme(self):#Draw the ship in the screen.

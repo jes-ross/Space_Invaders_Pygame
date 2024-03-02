@@ -58,5 +58,5 @@ class AlienInvasion:#Creating the game class.
         pg.display.flip()#Last screen.
 
 if __name__ == '__main__':#Instance the game and run it.
-    AI = AlienInvasion()
-    AI.run_game()
+    ai = AlienInvasion()
+    ai.run_game()
