@@ -12,28 +12,28 @@ class Ship:#Creating ship class.
         self.settings = ai_game.settings
         self.screen_rect = ai_game.screen.get_rect()
 
+        
         #Upload the image of the ship.
         self.image = pg.image.load('img/nave.bmp')
         self.rect = self.image.get_rect()
 
-        #Save a decimal value for the ship horizontal position.
-        self.x = float(self.rect.x)
+        self.rect.midbottom = self.screen_rect.midbottom #Position of the ship.
 
-        #Position of the ship.
-        self.rect.midbottom = self.screen_rect.midbottom
 
+        self.x = float(self.rect.x)#Save a decimal value for the ship horizontal position.
         #Movement flags.
         self.moving_right = False
         self.moving_left = False
-
-
+        
         self.rect.x = self.x
-
     def update(self):#Update ship position.
         
-        if self.moving_right:
+
+        
+        
+        if self.moving_right and self.rect.right < self.screen_rect.right:
             self.rect.x += self.settings.ship_speed
-        elif self.moving_left:
+        elif self.moving_left and self.rect.left > 0:
             self.rect.x -= self.settings.ship_speed
 
         
