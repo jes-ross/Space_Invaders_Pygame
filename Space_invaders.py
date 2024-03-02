@@ -29,13 +29,26 @@ class AlienInvasion:#Creating the game class.
     
         while True:#Start the loop.
             self._check_events()
+            self.ship.update()
             self._update_screen()
+
 
     def _check_events(self):
 
         for event in pg.event.get():#Searching for users inputs.
             if event.type == pg.QUIT:
                 sys.exit()
+            elif event.type == pg.KEYDOWN:
+                if event.key == pg.K_RIGHT:
+                    self.ship.moving_right = True
+                elif event.key == pg.K_LEFT:
+                    self.ship.moving_left = True
+            elif event.type == pg.KEYUP:
+                if event.key == pg.K_RIGHT:
+                    self.ship.moving_right = False
+                elif event.key == pg.K_LEFT:
+                    self.ship.moving_left = False
+                
 
     def _update_screen(self):
         

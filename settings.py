@@ -13,6 +13,10 @@ class Settings: #A class to save all the game configuration.
         self.screen_width:int = 1200
         self.screen_height:int = 800
         self.bg_color:tuple = (255, 255, 255)
+
+        #Ship configuration.
+        self.ship_speed = 1.5
+        
     
 
     
