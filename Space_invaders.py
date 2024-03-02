@@ -17,9 +17,10 @@ class AlienInvasion:#Creating the game class.
 
         self.settings = Settings()#Instance settings.
 
-        self.screen = pg.display.set_mode(
-            (self.settings.screen_width, self.settings.screen_height)
-        )
+        self.screen = pg.display.set_mode((0, 0), pg.FULLSCREEN)
+        self.settings.screen_width = self.screen.get_rect().width
+        self.settings.screen_height = self.screen.get_rect().height
+        
         pg.display.set_caption('Space Invaders')
         
         self.ship = Ship(self)
@@ -39,15 +40,23 @@ class AlienInvasion:#Creating the game class.
             if event.type == pg.QUIT:
                 sys.exit()
             elif event.type == pg.KEYDOWN:
-                if event.key == pg.K_RIGHT:
-                    self.ship.moving_right = True
-                elif event.key == pg.K_LEFT:
-                    self.ship.moving_left = True
+                self._check_keydown_events(event)
             elif event.type == pg.KEYUP:
-                if event.key == pg.K_RIGHT:
-                    self.ship.moving_right = False
-                elif event.key == pg.K_LEFT:
-                    self.ship.moving_left = False
+                self._check_keyup_events(event)
+                
+    def _check_keydown_events(self, event):
+        if event.key == pg.K_RIGHT:
+            self.ship.moving_right = True
+        elif event.key == pg.K_LEFT:
+            self.ship.moving_left = True
+
+        elif event.key == pg.K_q:
+            sys.exit()
+    def _check_keyup_events(self, event):
+            if event.key == pg.K_RIGHT:
+                self.ship.moving_right = False
+            elif event.key == pg.K_LEFT:
+                self.ship.moving_left = False
                 
 
     def _update_screen(self):

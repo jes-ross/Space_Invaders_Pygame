@@ -31,6 +31,7 @@ Existen varias maneras de crear uno con python. Este es un ejemplo:
 ## Movimiento
 
 Las flechas ◀️ y ▶️ corresponde al movimiento la tecla del Espacio es para disparar
+Pulsa Q para salir
 
 ## Segunda parte / Second Part
 
@@ -60,3 +61,4 @@ There are a lot of ways to create one with python. This is an example:
 # How play it?
 ## Movement
 The keys ◀️ and ▶️ are for movement and Space Bar is for shooting
+Press Q to quit
