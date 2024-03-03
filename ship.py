@@ -14,7 +14,7 @@ class Ship:#Creating ship class.
 
         
         #Upload the image of the ship.
-        self.image = pg.image.load('img/nave.bmp')
+        self.image = pg.image.load('img/Nave_Pro.bmp')
         self.rect = self.image.get_rect()
 
         self.rect.midbottom = self.screen_rect.midbottom #Position of the ship.
