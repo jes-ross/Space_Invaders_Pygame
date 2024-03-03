@@ -30,8 +30,8 @@ Existen varias maneras de crear uno con python. Este es un ejemplo:
 
 ## Movimiento
 
-Las flechas ◀️ y ▶️ corresponde al movimiento la tecla del Espacio es para disparar
-Pulsa Q para salir
+<p>Las flechas ◀️ y ▶️ corresponde al movimiento la tecla del Espacio es para disparar</p>
+<p>Pulsa Q para salir</p>
 
 ## Segunda parte / Second Part
 
