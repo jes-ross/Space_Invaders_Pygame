@@ -8,7 +8,7 @@ class Alien(Sprite):#Class for one alien.
         self.screen = ai_game.screen
 
         #Upload the alien and configure their 'rect' atribute.
-        self.image = pg.image.load('img/alien.bmp')
+        self.image = pg.image.load('img/Alien_Pro.bmp')
         self.rect = self.image.get_rect()
 
         #Alien position.
