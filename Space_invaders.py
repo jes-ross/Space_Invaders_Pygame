@@ -1,12 +1,13 @@
 #Libraries.
 import sys
-
+from time import sleep
 import pygame as pg
 
 from settings import Settings 
 from ship import Ship
 from bullet import Bullet
 from alien import Alien
+from game_stats import GameStats
 
 
 class AlienInvasion:#Creating the game class.
@@ -21,6 +22,9 @@ class AlienInvasion:#Creating the game class.
         self.screen = pg.display.set_mode((0, 0), pg.FULLSCREEN)
         self.settings.screen_width = self.screen.get_rect().width
         self.settings.screen_height = self.screen.get_rect().height
+
+        #Game statistics
+        self.stats = GameStats(self)
         
         pg.display.set_caption('Space Invaders')
         
@@ -46,6 +50,28 @@ class AlienInvasion:#Creating the game class.
             for alien_number in range(number_aliens_x):#Create first line of aliens
                 self._create_alien(alien_number, row_number)
 
+    def _ship_hit(self):
+        
+        if self.stats.ship_left > 0:
+            self.stats.ship_left -= 1
+            if self.stats.ship_left == 2:
+                self.ship.image = pg.image.load('img/Nave_Pro_Golpe.bmp')
+            if self.stats.ship_left == 1:
+                self.ship.image = pg.image.load('img/Nave_Pro_Golpe_final.bmp')
+        
+        
+        else:
+            self.stats.game_active = False
+                
+            
+
+        self.aliens.empty()
+        self.bullets.empty()
+
+        self._create_fleet()
+        self.ship.center_ship()
+
+        sleep(0.5)
 
 
     def _create_alien(self, alien_number, row_number):#Create alien and add it to a line
@@ -63,9 +89,10 @@ class AlienInvasion:#Creating the game class.
     
         while True:#Start the loop.
             self._check_events()
-            self.ship.update()
-            self._update_bullets()
-            self._update_aliens()
+            if self.stats.game_active:
+                self.ship.update()
+                self._update_bullets()
+                self._update_aliens()
             self._update_screen()
 
     def _update_bullets(self):
@@ -73,9 +100,26 @@ class AlienInvasion:#Creating the game class.
         for bullet in self.bullets.copy():
             if bullet.rect.bottom <= 0:
                 self.bullets.remove(bullet)
+        self._check_bullet_alien_collisions()
+
+    def _check_bullet_alien_collisions(self):
+        collisions = pg.sprite.groupcollide(
+            self.bullets, self.aliens, True, True 
+        )
+        if not self.aliens:
+            self.bullets.empty()
+            self._create_fleet()
 
     def _update_aliens(self):
+
+        self._check_fleet_edges()
         self.aliens.update()
+
+        if pg.sprite.spritecollideany(self.ship, self.aliens):
+            self._ship_hit()
+        
+        self._check_aliens_bottom()
+
     def _check_events(self):
 
         for event in pg.event.get():#Searching for users inputs.
@@ -87,6 +131,7 @@ class AlienInvasion:#Creating the game class.
                 self._check_keyup_events(event)
                 
     def _check_keydown_events(self, event):
+
         if event.key == pg.K_RIGHT:
             self.ship.moving_right = True
         elif event.key == pg.K_LEFT:
@@ -96,11 +141,32 @@ class AlienInvasion:#Creating the game class.
         elif event.key == pg.K_q:
             sys.exit()
     def _check_keyup_events(self, event):
+            
             if event.key == pg.K_RIGHT:
                 self.ship.moving_right = False
             elif event.key == pg.K_LEFT:
                 self.ship.moving_left = False
+    
+    def _check_fleet_edges(self):
+
+        for alien in self.aliens.sprites():
+            if alien.check_edges():
+                self._change_fleet_direction()
+                break
+    def _check_aliens_bottom(self):
+        screen_rect = self.screen.get_rect()
+        for alien in self.aliens.sprites():
+            if alien.rect.bottom >= screen_rect.bottom:
+                self._ship_hit()
+                break
+
+    def _change_fleet_direction(self):
+        for alien in self.aliens.sprites():
+            alien.rect.y += self.settings.fleet_drop_speed
+        self.settings.fleet_direction *= -1
+
     def _fire_bullet(self):#Create a new bullet
+
         if len(self.bullets) < self.settings.bullets_allowed:
             new_bullet = Bullet(self)
             self.bullets.add(new_bullet)
