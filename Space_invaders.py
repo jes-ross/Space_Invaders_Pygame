@@ -65,6 +65,7 @@ class AlienInvasion:#Creating the game class.
             self._check_events()
             self.ship.update()
             self._update_bullets()
+            self._update_aliens()
             self._update_screen()
 
     def _update_bullets(self):
@@ -72,6 +73,9 @@ class AlienInvasion:#Creating the game class.
         for bullet in self.bullets.copy():
             if bullet.rect.bottom <= 0:
                 self.bullets.remove(bullet)
+
+    def _update_aliens(self):
+        self.aliens.update()
     def _check_events(self):
 
         for event in pg.event.get():#Searching for users inputs.
