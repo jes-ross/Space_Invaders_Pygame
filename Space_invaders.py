@@ -8,6 +8,7 @@ from ship import Ship
 from bullet import Bullet
 from alien import Alien
 from game_stats import GameStats
+from scoreboard import Scoreboard
 from button import Button
 
 
@@ -26,6 +27,7 @@ class AlienInvasion:#Creating the game class.
 
         #Game statistics
         self.stats = GameStats(self)
+        self.sb = Scoreboard(self)
         
         pg.display.set_caption('Space Invaders')
         
@@ -123,8 +125,13 @@ class AlienInvasion:#Creating the game class.
     def _check_bullet_alien_collisions(self):
 
         collisions = pg.sprite.groupcollide(
-            self.bullets, self.aliens, True, True 
-        )
+            self.bullets, self.aliens, True, True )
+        if collisions:
+            for aliens in collisions.values():
+                self.stats.score += self.settings.alien_points + len(aliens)
+            self.sb.prep_score()
+            self.sb.check_high_score()
+
         if not self.aliens:
             self.bullets.empty()
             self._create_fleet()
@@ -207,6 +214,7 @@ class AlienInvasion:#Creating the game class.
         if self.play_button.rect.collidepoint(mouse_pos):
             self.stats.reset_stats()
             self.stats.game_active = True
+            self.sb.prep_score()
             self.aliens.empty()
             self.bullets.empty()
 
@@ -236,6 +244,8 @@ class AlienInvasion:#Creating the game class.
             
             bullet.draw_bullet()
         self.aliens.draw(self.screen)
+
+        self.sb.show_score()
 
         if not self.stats.game_active:
             self.play_button.draw_button()
